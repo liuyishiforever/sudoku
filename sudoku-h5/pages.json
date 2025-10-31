@@ -35,12 +35,6 @@
       }
     }
   ],
-  "tabBar": {
-    "color": "#bfbfbf",
-    "selectedColor": "#667eea",
-    "backgroundColor": "#fff",
-    "list": []
-  },
   "globalStyle": {
     "navigationBarTitleText": "数独游戏",
     "navigationBarBackgroundColor": "#667eea",

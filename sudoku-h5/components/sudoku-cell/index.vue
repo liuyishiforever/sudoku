@@ -2,7 +2,7 @@
   <view 
     class="sudoku-cell"
     :class="cellClasses"
-    @click="handleClick"
+    @tap="handleClick"
   >
     <!-- 初始数字 -->
     <text v-if="isOriginal" class="cell-value original">{{ displayValue }}</text>
@@ -12,14 +12,14 @@
     
     <!-- 笔记 -->
     <view v-else-if="notes.length > 0" class="cell-notes">
-      <text 
+      <view 
         v-for="num in 9" 
         :key="num" 
         class="note-item"
         :class="{ active: notes.includes(num) }"
       >
-        {{ notes.includes(num) ? num : '' }}
-      </text>
+        <text v-if="notes.includes(num)" class="note-text">{{ num }}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -158,22 +158,29 @@ export default {
 .cell-notes {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  padding: 4rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rpx;
+  box-sizing: border-box;
 }
 
 .note-item {
-  font-size: 18rpx;
-  color: #999;
+  width: 33.333%;
+  height: 33.333%;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+}
+
+.note-text {
+  font-size: 18rpx;
+  color: #666;
+  font-weight: 500;
   line-height: 1;
 }
 
-.note-item.active {
+.note-item.active .note-text {
   color: #666;
   font-weight: 500;
 }

@@ -23,12 +23,10 @@ export default {
 </script>
 
 <style lang="scss">
-/* 引入字体图标 */
-@import url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/css/all.css');
-
 /*每个页面公共css */
 @import './common/fui-app.css';
 @import './components/firstui/fui-theme/fui-theme.css';
+@import './static/font-awesome.css';
 
 /* 全局样式 - 防止横向溢出 */
 page {

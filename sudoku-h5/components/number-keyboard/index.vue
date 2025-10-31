@@ -6,7 +6,7 @@
         :key="num"
         class="keyboard-btn"
         :class="{ disabled: isDisabled(num) }"
-        @click="handleNumberClick(num)"
+        @tap="handleNumberClick(num)"
       >
         <text class="btn-text">{{ num }}</text>
         <text v-if="showCount" class="btn-count">{{ getNumberCount(num) }}/9</text>
@@ -18,14 +18,14 @@
         :key="num"
         class="keyboard-btn"
         :class="{ disabled: isDisabled(num) }"
-        @click="handleNumberClick(num)"
+        @tap="handleNumberClick(num)"
       >
         <text class="btn-text">{{ num }}</text>
         <text v-if="showCount" class="btn-count">{{ getNumberCount(num) }}/9</text>
       </view>
       <view 
         class="keyboard-btn erase"
-        @click="handleEraseClick"
+        @tap="handleEraseClick"
       >
         <text class="btn-icon">✕</text>
         <text class="btn-label">清除</text>
@@ -104,11 +104,11 @@ export default {
   width: 100%;
   padding: 20rpx;
   background-color: #fafafa;
+  box-sizing: border-box;
 }
 
 .keyboard-row {
   display: flex;
-  gap: 12rpx;
   margin-bottom: 12rpx;
 }
 
@@ -128,6 +128,11 @@ export default {
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease;
   position: relative;
+  margin-right: 12rpx;
+}
+
+.keyboard-btn:last-child {
+  margin-right: 0;
 }
 
 .keyboard-btn:active:not(.disabled) {

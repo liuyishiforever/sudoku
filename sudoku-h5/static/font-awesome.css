@@ -1,0 +1,619 @@
+/* Font Awesome CDN 字体文件 - 兼容小程序 */
+
+/* Font Awesome Free 6.7.2 - Solid Icons */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2') format('woff2'),
+       url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.ttf') format('truetype');
+}
+
+/* Font Awesome Free 6.7.2 - Regular Icons */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/webfonts/fa-regular-400.woff2') format('woff2'),
+       url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/webfonts/fa-regular-400.ttf') format('truetype');
+}
+
+/* Font Awesome Free 6.7.2 - Brands Icons */
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/webfonts/fa-brands-400.woff2') format('woff2'),
+       url('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/webfonts/fa-brands-400.ttf') format('truetype');
+}
+
+/* 基础样式 - Base Styles */
+.fa,
+.fas,
+.far,
+.fab {
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Solid 实心图标 */
+.fa,
+.fas {
+  font-family: 'Font Awesome 6 Free' !important;
+  font-weight: 900;
+}
+
+/* Regular 常规图标 */
+.far {
+  font-family: 'Font Awesome 6 Free' !important;
+  font-weight: 400;
+}
+
+/* Brands 品牌图标 */
+.fab {
+  font-family: 'Font Awesome 6 Brands' !important;
+  font-weight: 400;
+}
+
+/* 图标代码映射 - Icon Code Mappings */
+/* 常用图标的 Unicode 映射 */
+
+/* 书本 - Book */
+.fa-book::before { content: "\f02d"; }
+
+/* 文件 - File */
+.fa-file::before { content: "\f15b"; }
+.fa-file-lines::before { content: "\f15c"; }
+
+/* 箭头 - Arrows */
+.fa-chevron-right::before { content: "\f054"; }
+.fa-chevron-left::before { content: "\f053"; }
+.fa-chevron-down::before { content: "\f078"; }
+.fa-chevron-up::before { content: "\f077"; }
+.fa-arrow-left::before { content: "\f060"; }
+.fa-arrow-right::before { content: "\f061"; }
+
+/* 时钟 - Clock */
+.fa-clock::before { content: "\f017"; }
+.fa-clock-rotate-left::before { content: "\f1da"; }
+
+/* 秒表 - Stopwatch */
+.fa-stopwatch::before { content: "\f2f2"; }
+.fa-stopwatch-20::before { content: "\e06f"; }
+
+/* 勾选 - Check */
+.fa-check::before { content: "\f00c"; }
+.fa-check-circle::before { content: "\f058"; }
+.fa-circle-check::before { content: "\f058"; }
+
+/* 关闭 - Close */
+.fa-times::before { content: "\f00d"; }
+.fa-xmark::before { content: "\f00d"; }
+.fa-circle-xmark::before { content: "\f057"; }
+.fa-times-circle::before { content: "\f057"; } /* 别名 */
+.fa-xmark-circle::before { content: "\f057"; } /* 别名 */
+
+/* 问题 - Question */
+.fa-question::before { content: "\f128"; }
+.fa-question-circle::before { content: "\f059"; }
+.fa-circle-question::before { content: "\f059"; }
+
+/* 感叹号 - Exclamation */
+.fa-exclamation::before { content: "\f12a"; }
+.fa-exclamation-circle::before { content: "\f06a"; }
+.fa-circle-exclamation::before { content: "\f06a"; }
+
+/* 信息 - Info */
+.fa-info::before { content: "\f129"; }
+.fa-info-circle::before { content: "\f05a"; }
+.fa-circle-info::before { content: "\f05a"; }
+
+/* 用户 - User */
+.fa-user::before { content: "\f007"; }
+.fa-user-circle::before { content: "\f2bd"; }
+.fa-circle-user::before { content: "\f2bd"; }
+
+/* 星星 - Star */
+.fa-star::before { content: "\f005"; }
+
+/* 心形 - Heart */
+.fa-heart::before { content: "\f004"; }
+
+/* 搜索 - Search */
+.fa-search::before { content: "\f002"; }
+.fa-magnifying-glass::before { content: "\f002"; }
+
+/* 设置 - Settings */
+.fa-cog::before { content: "\f013"; }
+.fa-gear::before { content: "\f013"; }
+
+/* 铃铛 - Bell */
+.fa-bell::before { content: "\f0f3"; }
+
+/* 日历 - Calendar */
+.fa-calendar::before { content: "\f133"; }
+.fa-calendar-days::before { content: "\f073"; }
+
+/* 眼睛 - Eye */
+.fa-eye::before { content: "\f06e"; }
+.fa-eye-slash::before { content: "\f070"; }
+
+/* 编辑 - Edit */
+.fa-edit::before { content: "\f044"; }
+.fa-pen::before { content: "\f304"; }
+.fa-pen-to-square::before { content: "\f044"; }
+
+/* 删除 - Delete */
+.fa-trash::before { content: "\f1f8"; }
+.fa-trash-can::before { content: "\f2ed"; }
+
+/* 加号 - Plus */
+.fa-plus::before { content: "\2b"; }
+.fa-plus-circle::before { content: "\f055"; }
+.fa-circle-plus::before { content: "\f055"; }
+
+/* 减号 - Minus */
+.fa-minus::before { content: "\f068"; }
+.fa-minus-circle::before { content: "\f056"; }
+.fa-circle-minus::before { content: "\f056"; }
+
+/* 主页 - Home */
+.fa-home::before { content: "\f015"; }
+.fa-house::before { content: "\f015"; }
+
+/* 列表 - List */
+.fa-list::before { content: "\f03a"; }
+.fa-list-ul::before { content: "\f0ca"; }
+.fa-list-check::before { content: "\f0ae"; }
+
+/* 分享 - Share */
+.fa-share::before { content: "\f064"; }
+.fa-share-nodes::before { content: "\f1e0"; }
+
+/* 下载 - Download */
+.fa-download::before { content: "\f019"; }
+
+/* 上传 - Upload */
+.fa-upload::before { content: "\f093"; }
+
+/* 刷新 - Refresh */
+.fa-refresh::before { content: "\f021"; }
+.fa-rotate::before { content: "\f021"; }
+
+/* 锁 - Lock */
+.fa-lock::before { content: "\f023"; }
+.fa-unlock::before { content: "\f09c"; }
+
+/* 收藏 - Bookmark */
+.fa-bookmark::before { content: "\f02e"; }
+
+/* 消息 - Message */
+.fa-comment::before { content: "\f075"; }
+.fa-message::before { content: "\f27a"; }
+
+/* 图片 - Image */
+.fa-image::before { content: "\f03e"; }
+
+/* 视频 - Video */
+.fa-video::before { content: "\f03d"; }
+
+/* 音乐 - Music */
+.fa-music::before { content: "\f001"; }
+
+/* 位置 - Location */
+.fa-location-dot::before { content: "\f3c5"; }
+.fa-map-marker-alt::before { content: "\f3c5"; }
+
+/* 标签 - Tag */
+.fa-tag::before { content: "\f02b"; }
+.fa-tags::before { content: "\f02c"; }
+
+/* 奖杯 - Trophy */
+.fa-trophy::before { content: "\f091"; }
+
+/* 证书 - Certificate */
+.fa-certificate::before { content: "\f0a3"; }
+
+/* 火焰 - Fire */
+.fa-fire::before { content: "\f06d"; }
+
+/* 闪电 - Bolt */
+.fa-bolt::before { content: "\f0e7"; }
+
+/* 电池 - Battery */
+.fa-battery-full::before { content: "\f240"; }
+.fa-battery-half::before { content: "\f242"; }
+
+/* 信号 - Signal */
+.fa-signal::before { content: "\f012"; }
+
+/* WiFi */
+.fa-wifi::before { content: "\f1eb"; }
+
+/* 链接 - Link */
+.fa-link::before { content: "\f0c1"; }
+
+/* 剪贴板 - Clipboard */
+.fa-clipboard::before { content: "\f328"; }
+
+/* 打印 - Print */
+.fa-print::before { content: "\f02f"; }
+
+/* 邮件 - Envelope */
+.fa-envelope::before { content: "\f0e0"; }
+
+/* 电话 - Phone */
+.fa-phone::before { content: "\f095"; }
+
+/* 手机 - Mobile */
+.fa-mobile::before { content: "\f3cd"; }
+.fa-mobile-alt::before { content: "\f3cd"; }
+
+/* 平板 - Tablet */
+.fa-tablet::before { content: "\f3fa"; }
+
+/* 笔记本 - Laptop */
+.fa-laptop::before { content: "\f109"; }
+
+/* 桌面 - Desktop */
+.fa-desktop::before { content: "\f108"; }
+
+/* 购物车 - Shopping Cart */
+.fa-shopping-cart::before { content: "\f07a"; }
+.fa-cart-shopping::before { content: "\f07a"; }
+
+/* 钱包 - Wallet */
+.fa-wallet::before { content: "\f555"; }
+
+/* 币 - Coins */
+.fa-coins::before { content: "\f51e"; }
+
+/* 图表 - Chart */
+.fa-chart-line::before { content: "\f201"; }
+.fa-chart-bar::before { content: "\f080"; }
+.fa-chart-pie::before { content: "\f200"; }
+
+/* 礼物 - Gift */
+.fa-gift::before { content: "\f06b"; }
+
+/* 手机 - Mobile */
+.fa-mobile-alt::before { content: "\f3cd"; }
+.fa-mobile-screen::before { content: "\f3cf"; }
+
+/* 盾牌 - Shield */
+.fa-shield::before { content: "\f132"; }
+.fa-shield-halved::before { content: "\f3ed"; }
+
+/* 音量 - Volume */
+.fa-volume::before { content: "\f6a8"; }
+
+/* 扫帚 - Broom */
+.fa-broom::before { content: "\f51a"; }
+
+/* 目标 - Bullseye */
+.fa-bullseye::before { content: "\f140"; }
+
+/* 箭头旋转 - Arrows Rotate */
+.fa-arrows-rotate::before { content: "\f021"; }
+
+/* 文件合同 - File Contract */
+.fa-file-contract::before { content: "\f56c"; }
+
+/* 重做 - Redo */
+.fa-redo::before { content: "\f01e"; }
+
+/* 旋转右 - Rotate Right */
+.fa-rotate-right::before { content: "\f2f9"; }
+
+/* 日历天 - Calendar Day */
+.fa-calendar-day::before { content: "\f783"; }
+
+/* 洗牌 - Shuffle */
+.fa-shuffle::before { content: "\f074"; }
+
+/* 灯泡 - Lightbulb */
+.fa-lightbulb::before { content: "\f0eb"; }
+
+/* 双勾选 - Check Double */
+.fa-check-double::before { content: "\f560"; }
+
+/* 纸飞机 - Paper Plane */
+.fa-paper-plane::before { content: "\f1d8"; }
+
+/* 建筑 - Building */
+.fa-building::before { content: "\f1ad"; }
+
+/* 分享替代 - Share Alt */
+.fa-share-alt::before { content: "\f1e0"; }
+
+/* 复制 - Copy */
+.fa-copy::before { content: "\f0c5"; }
+
+/* 分享节点 - Share Nodes */
+.fa-share-from-square::before { content: "\f14d"; }
+
+/* 右进入括号 - Right to Bracket (登录) */
+.fa-right-to-bracket::before { content: "\f2f6"; }
+.fa-sign-in::before { content: "\f2f6"; }
+.fa-sign-in-alt::before { content: "\f2f6"; }
+
+/* 右离开括号 - Right from Bracket (登出) */
+.fa-right-from-bracket::before { content: "\f2f5"; }
+.fa-sign-out::before { content: "\f2f5"; }
+.fa-sign-out-alt::before { content: "\f2f5"; }
+
+/* 圆圈点 - Circle Dot */
+.fa-dot-circle::before { content: "\f192"; }
+
+/* 数据库 - Database */
+.fa-database::before { content: "\f1c0"; }
+
+/* 服务器 - Server */
+.fa-server::before { content: "\f233"; }
+
+/* 代码 - Code */
+.fa-code::before { content: "\f121"; }
+
+/* 终端 - Terminal */
+.fa-terminal::before { content: "\f120"; }
+
+/* 文件夹 - Folder */
+.fa-folder::before { content: "\f07b"; }
+.fa-folder-open::before { content: "\f07c"; }
+
+/* 新闻 - Newspaper */
+.fa-newspaper::before { content: "\f1ea"; }
+
+/* 笔 - Pen */
+.fa-pen-fancy::before { content: "\f5ac"; }
+
+/* 过滤 - Filter */
+.fa-filter::before { content: "\f0b0"; }
+
+/* 排序 - Sort */
+.fa-sort::before { content: "\f0dc"; }
+.fa-sort-up::before { content: "\f0de"; }
+.fa-sort-down::before { content: "\f0dd"; }
+
+/* 播放 - Play */
+.fa-play::before { content: "\f04b"; }
+.fa-pause::before { content: "\f04c"; }
+.fa-stop::before { content: "\f04d"; }
+
+/* 音量 - Volume */
+.fa-volume-high::before { content: "\f028"; }
+.fa-volume-low::before { content: "\f027"; }
+.fa-volume-off::before { content: "\f026"; }
+.fa-volume-xmark::before { content: "\f6a9"; }
+
+/* 向前 - Forward */
+.fa-forward::before { content: "\f04e"; }
+.fa-backward::before { content: "\f04a"; }
+
+/* 椭圆 - Ellipsis */
+.fa-ellipsis::before { content: "\f141"; }
+.fa-ellipsis-vertical::before { content: "\f142"; }
+
+/* 网格 - Grip */
+.fa-grip::before { content: "\f58d"; }
+.fa-grip-vertical::before { content: "\f58e"; }
+
+/* 条形码 - Barcode */
+.fa-barcode::before { content: "\f02a"; }
+
+/* 二维码 - QR Code */
+.fa-qrcode::before { content: "\f029"; }
+
+/* 签名 - Signature */
+.fa-signature::before { content: "\f5b7"; }
+
+/* 指纹 - Fingerprint */
+.fa-fingerprint::before { content: "\f577"; }
+
+/* 云 - Cloud */
+.fa-cloud::before { content: "\f0c2"; }
+.fa-cloud-download::before { content: "\f0ed"; }
+.fa-cloud-upload::before { content: "\f0ee"; }
+
+/* 伞 - Umbrella */
+.fa-umbrella::before { content: "\f0e9"; }
+
+/* 太阳 - Sun */
+.fa-sun::before { content: "\f185"; }
+
+/* 月亮 - Moon */
+.fa-moon::before { content: "\f186"; }
+
+/* 菜单 - Bars */
+.fa-bars::before { content: "\f0c9"; }
+
+/* 网格布局 - Grid */
+.fa-table-cells::before { content: "\f00a"; }
+.fa-grid-2::before { content: "\e195"; }
+.fa-grid::before { content: "\e195"; }
+
+/* 旋转 - Rotate */
+.fa-rotate-left::before { content: "\f0e2"; }
+.fa-arrow-rotate-right::before { content: "\f01e"; }
+.fa-arrow-rotate-left::before { content: "\f0e2"; }
+
+/* 铅笔 - Pencil */
+.fa-pencil::before { content: "\f303"; }
+
+/* 国际象棋 - Chess */
+.fa-chess::before { content: "\f439"; }
+.fa-chess-pawn::before { content: "\f443"; }
+.fa-chess-rook::before { content: "\f447"; }
+.fa-chess-knight::before { content: "\f441"; }
+.fa-chess-bishop::before { content: "\f43a"; }
+.fa-chess-queen::before { content: "\f445"; }
+.fa-chess-king::before { content: "\f43f"; }
+
+/* 数字 - Numbers */
+.fa-1::before { content: "\31"; }
+.fa-2::before { content: "\32"; }
+.fa-3::before { content: "\33"; }
+.fa-4::before { content: "\34"; }
+.fa-5::before { content: "\35"; }
+.fa-6::before { content: "\36"; }
+.fa-7::before { content: "\37"; }
+.fa-8::before { content: "\38"; }
+.fa-9::before { content: "\39"; }
+.fa-0::before { content: "\30"; }
+
+/* 剪贴板列表 - Clipboard List */
+.fa-clipboard-list::before { content: "\f46d"; }
+
+/* 游戏手柄 - Gamepad */
+.fa-gamepad::before { content: "\f11b"; }
+
+/* 皇冠 - Crown */
+.fa-crown::before { content: "\f521"; }
+
+/* 闪光 - Sparkles */
+.fa-sparkles::before { content: "\f890"; }
+.fa-wand-sparkles::before { content: "\e2ca"; }
+.fa-magic-wand-sparkles::before { content: "\e2ca"; }
+
+/* 软盘 - Floppy Disk */
+.fa-floppy-disk::before { content: "\f0c7"; }
+.fa-save::before { content: "\f0c7"; }
+
+/* 复选框 - Square Check */
+.fa-square-check::before { content: "\f14a"; }
+.fa-check-square::before { content: "\f14a"; }
+
+/* 单选框 - Circle Dot */
+.fa-circle-dot::before { content: "\f192"; }
+
+/* 警告 - Warning */
+.fa-warning::before { content: "\f071"; }
+.fa-triangle-exclamation::before { content: "\f071"; }
+.fa-exclamation-triangle::before { content: "\f071"; }
+
+/* 成功 - Success */
+.fa-circle-check::before { content: "\f058"; }
+
+/* 错误 - Error */
+.fa-circle-xmark::before { content: "\f057"; }
+
+/* 帮助 - Help */
+.fa-circle-question::before { content: "\f059"; }
+
+/* 撤销 - Undo */
+.fa-undo::before { content: "\f0e2"; }
+.fa-arrow-rotate-back::before { content: "\f0e2"; }
+
+/* 重做 - Redo (已有但补充别名) */
+.fa-redo-alt::before { content: "\f2f9"; }
+.fa-arrow-rotate-forward::before { content: "\f2f9"; }
+
+/* 橡皮擦 - Eraser */
+.fa-eraser::before { content: "\f12d"; }
+
+/* 魔法棒 - Wand Magic */
+.fa-magic::before { content: "\f0d0"; }
+.fa-wand-magic::before { content: "\f0d0"; }
+
+/* 网格 - Grid (额外样式) */
+.fa-table-cells-large::before { content: "\f009"; }
+.fa-th-large::before { content: "\f009"; }
+.fa-table-cells::before { content: "\f00a"; }
+.fa-th::before { content: "\f00a"; }
+
+/* 网格小 - Grid Small */
+.fa-th-list::before { content: "\f00b"; }
+
+/* 计算器 - Calculator */
+.fa-calculator::before { content: "\f1ec"; }
+
+/* 脑 - Brain */
+.fa-brain::before { content: "\f5dc"; }
+
+/* 拼图 - Puzzle Piece */
+.fa-puzzle-piece::before { content: "\f12e"; }
+
+/* 魔方 - Cube */
+.fa-cube::before { content: "\f1b2"; }
+.fa-cubes::before { content: "\f1b3"; }
+
+/* 骰子 - Dice */
+.fa-dice::before { content: "\f522"; }
+.fa-dice-one::before { content: "\f525"; }
+.fa-dice-two::before { content: "\f528"; }
+.fa-dice-three::before { content: "\f527"; }
+.fa-dice-four::before { content: "\f524"; }
+.fa-dice-five::before { content: "\f523"; }
+.fa-dice-six::before { content: "\f526"; }
+
+/* 奖牌 - Medal */
+.fa-medal::before { content: "\f5a2"; }
+
+/* 排名 - Ranking Star */
+.fa-ranking-star::before { content: "\e561"; }
+
+/* 列表检查 - List Check */
+.fa-tasks::before { content: "\f0ae"; }
+
+/* 思考 - Thinking */
+.fa-face-thinking::before { content: "\e39b"; }
+
+/* 记忆 - Memory */
+.fa-head-side-brain::before { content: "\f808"; }
+
+/* 旋转左 - Rotate Left (已有但补充) */
+.fa-undo-alt::before { content: "\f2ea"; }
+
+/* 旋转动画 - Spin Animation */
+.fa-spin {
+  animation: fa-spin 2s infinite linear;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 脉冲动画 - Pulse Animation */
+.fa-pulse {
+  animation: fa-pulse 1s infinite steps(8);
+}
+
+@keyframes fa-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 固定宽度 - Fixed Width */
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+/* 尺寸修饰符 - Size Modifiers */
+.fa-xs { font-size: 0.75em; }
+.fa-sm { font-size: 0.875em; }
+.fa-lg { font-size: 1.25em; }
+.fa-xl { font-size: 1.5em; }
+.fa-2x { font-size: 2em; }
+.fa-3x { font-size: 3em; }
+.fa-4x { font-size: 4em; }
+.fa-5x { font-size: 5em; }
+

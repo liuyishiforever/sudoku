@@ -20,7 +20,7 @@
           :notes="getCellNotes(rowIndex, colIndex)"
           :row="rowIndex"
           :col="colIndex"
-          @click="handleCellClick"
+          @tap="handleCellClick"
         />
       </view>
     </view>
@@ -88,23 +88,27 @@ export default {
 
 <style scoped>
 .sudoku-board {
-  width: 100%;
-  aspect-ratio: 1;
+  width: 710rpx;
+  height: 710rpx;
   background-color: #333;
   border: 4rpx solid #333;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
 }
 
 .board-row {
-  flex: 1;
+  height: 78.89rpx;
   display: flex;
+  flex: 1;
 }
 
 .board-cell {
-  flex: 1;
+  width: 78.89rpx;
+  height: 100%;
   display: flex;
+  flex: 1;
 }
 </style>
 

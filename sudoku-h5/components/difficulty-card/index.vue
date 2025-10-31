@@ -2,10 +2,10 @@
   <view 
     class="difficulty-card"
     :style="cardStyle"
-    @click="handleClick"
+    @tap="handleClick"
   >
     <view class="card-icon" :style="{ color: iconColor }">
-      <text :class="['icon-text', icon]"></text>
+      <base-icon :name="icon" size="44" unit="rpx" :color="iconColor" class="icon-text" />
     </view>
     <view class="card-content">
       <text class="card-title">{{ config.name }}</text>
@@ -20,9 +20,13 @@
 
 <script>
 import { getDifficultyConfig } from '@/utils/sudoku-helper'
+import BaseIcon from '@/components/base-icon/index.vue'
 
 export default {
   name: 'DifficultyCard',
+  components: {
+    BaseIcon
+  },
   props: {
     difficulty: {
       type: String,
@@ -38,12 +42,12 @@ export default {
     },
     icon() {
       const icons = {
-        easy: 'fa-solid fa-star',
-        medium: 'fa-solid fa-bolt',
-        hard: 'fa-solid fa-fire',
-        expert: 'fa-solid fa-crown'
+        easy: 'star',
+        medium: 'bolt',
+        hard: 'fire',
+        expert: 'crown'
       }
-      return icons[this.difficulty] || 'fa-solid fa-gamepad'
+      return icons[this.difficulty] || 'gamepad'
     },
     iconColor() {
       const colors = {
@@ -70,13 +74,20 @@ export default {
   border-radius: 16rpx;
   display: flex;
   align-items: center;
-  gap: 24rpx;
   background: #fff;
   box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
   margin-bottom: 16rpx;
   box-sizing: border-box;
   border: 1rpx solid rgba(0, 0, 0, 0.04);
+}
+
+.difficulty-card > view {
+  margin-right: 24rpx;
+}
+
+.difficulty-card > view:last-child {
+  margin-right: 0;
 }
 
 .difficulty-card:active {
@@ -96,16 +107,20 @@ export default {
   flex-shrink: 0;
 }
 
-.icon-text {
-  font-size: 44rpx;
-  line-height: 1;
-}
+/* .icon-text 样式已由 base-icon 组件处理 */
 
 .card-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6rpx;
+}
+
+.card-content > text {
+  margin-bottom: 6rpx;
+}
+
+.card-content > text:last-child {
+  margin-bottom: 0;
 }
 
 .card-title {

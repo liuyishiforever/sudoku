@@ -1,6 +1,6 @@
 {
     "name" : "数独游戏",
-    "appid" : "__UNI__4E2D559",
+    "appid" : "__UNI__A09AE9B",
     "description" : "数独游戏 - 挑战你的逻辑思维",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -45,7 +45,7 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "wx1e667f04914904b9",
+        "appid" : "wxb949b8a684ee988b",
         "setting" : {
             "urlCheck" : false,
             "es6" : false,
@@ -56,11 +56,7 @@
             "subPackages" : true
         },
         "requiredPrivateInfos" : [ "chooseAddress", "choosePoi" ],
-        "permission" : {
-            "scope.userLocation" : {
-                "desc" : "使用位置接口，方便用户"
-            }
-        }
+        "permission" : {}
     },
     "vueVersion" : "2",
     "h5" : {

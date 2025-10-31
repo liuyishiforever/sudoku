@@ -1,13 +1,8 @@
 <template>
   <view class="home-container">
-    <!-- 头部 -->
-    <view class="header">
-      <view class="logo">
-        <text class="logo-icon fa-solid fa-grid-2"></text>
-        <text class="logo-text">数独游戏</text>
-      </view>
-    </view>
-
+    <fui-nav-bar background="transparent" is-occupy is-fixed>
+    </fui-nav-bar>
+ 
     <!-- 主内容 -->
     <view class="content">
       <!-- 标题 -->
@@ -22,24 +17,24 @@
           v-for="level in difficulties"
           :key="level"
           :difficulty="level"
-          @click="handleDifficultyClick"
+          @tap="handleDifficultyClick"
         />
       </view>
 
       <!-- 继续游戏按钮 -->
-      <view v-if="hasSavedGame" class="continue-game-btn" @click="handleContinue">
-        <text class="continue-icon fa-solid fa-play"></text>
+      <view v-if="hasSavedGame" class="continue-game-btn" @tap="handleContinue">
+        <base-icon name="play" size="32" unit="rpx" color="#fff" class="continue-icon" />
         <text class="continue-text">继续上次游戏</text>
       </view>
 
       <!-- 底部链接 -->
       <view class="footer-links">
-        <view class="link-item" @click="handleRules">
-          <text class="link-icon fa-solid fa-book"></text>
+        <view class="link-item" @tap="handleRules">
+          <base-icon name="book" size="26" unit="rpx" color="#0071e3" class="link-icon" />
           <text class="link-text">游戏规则</text>
         </view>
-        <view class="link-item" @click="handleTips">
-          <text class="link-icon fa-solid fa-lightbulb"></text>
+        <view class="link-item" @tap="handleTips">
+          <base-icon name="lightbulb" size="26" unit="rpx" color="#0071e3" class="link-icon" />
           <text class="link-text">技巧分享</text>
         </view>
       </view>
@@ -50,11 +45,13 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import DifficultyCard from '@/components/difficulty-card/index.vue'
+import BaseIcon from '@/components/base-icon/index.vue'
 
 export default {
   name: 'Home',
   components: {
-    DifficultyCard
+    DifficultyCard,
+    BaseIcon
   },
   data() {
     return {
@@ -128,14 +125,9 @@ export default {
 .logo {
   display: flex;
   align-items: center;
-  gap: 16rpx;
 }
 
-.logo-icon {
-  font-size: 56rpx;
-  color: #1d1d1f;
-  line-height: 1;
-}
+/* .logo-icon 样式已由 base-icon 组件处理 */
 
 .logo-text {
   font-size: 44rpx;
@@ -196,21 +188,26 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12rpx;
   margin-bottom: 32rpx;
   transition: all 0.2s ease;
   box-sizing: border-box;
+}
+
+.continue-game-btn > view,
+.continue-game-btn > text {
+  margin-right: 12rpx;
+}
+
+.continue-game-btn > view:last-child,
+.continue-game-btn > text:last-child {
+  margin-right: 0;
 }
 
 .continue-game-btn:active {
   background: #0077ed;
 }
 
-.continue-icon {
-  font-size: 32rpx;
-  color: #fff;
-  line-height: 1;
-}
+/* .continue-icon 样式已由 base-icon 组件处理 */
 
 .continue-text {
   font-size: 28rpx;
@@ -224,31 +221,43 @@ export default {
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 16rpx;
   padding: 20rpx 0;
   width: 100%;
   box-sizing: border-box;
 }
 
+.footer-links > view {
+  margin-right: 16rpx;
+}
+
+.footer-links > view:last-child {
+  margin-right: 0;
+}
+
 .link-item {
   display: flex;
   align-items: center;
-  gap: 10rpx;
   padding: 16rpx 28rpx;
   background: transparent;
   border-radius: 48rpx;
   transition: all 0.2s ease;
 }
 
+.link-item > view,
+.link-item > text {
+  margin-right: 10rpx;
+}
+
+.link-item > view:last-child,
+.link-item > text:last-child {
+  margin-right: 0;
+}
+
 .link-item:active {
   background: rgba(0, 0, 0, 0.05);
 }
 
-.link-icon {
-  font-size: 26rpx;
-  color: #0071e3;
-  line-height: 1;
-}
+/* .link-icon 样式已由 base-icon 组件处理 */
 
 .link-text {
   font-size: 26rpx;

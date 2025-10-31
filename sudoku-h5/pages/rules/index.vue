@@ -1,20 +1,9 @@
 <template>
   <view class="rules-container">
-    <!-- 头部 -->
-    <view class="header">
-      <view class="back-btn" @click="handleBack">
-        <text class="back-icon">‹</text>
-      </view>
-      <text class="header-title">游戏规则</text>
-      <view class="placeholder"></view>
-    </view>
-
-    <!-- 内容 -->
-    <scroll-view class="content" scroll-y>
       <!-- 基础规则 -->
       <view class="section">
         <view class="section-header">
-          <text class="section-icon fa-solid fa-clipboard-list"></text>
+          <base-icon name="clipboard-list" size="36" unit="rpx" color="#0071e3" class="section-icon" />
           <text class="section-title">基础规则</text>
         </view>
         <view class="section-content">
@@ -71,7 +60,7 @@
       <!-- 游戏玩法 -->
       <view class="section">
         <view class="section-header">
-          <text class="section-icon fa-solid fa-gamepad"></text>
+          <base-icon name="gamepad" size="36" unit="rpx" color="#0071e3" class="section-icon" />
           <text class="section-title">游戏玩法</text>
         </view>
         <view class="section-content">
@@ -120,7 +109,7 @@
       <!-- 解题技巧 -->
       <view class="section">
         <view class="section-header">
-          <text class="section-icon fa-solid fa-lightbulb"></text>
+          <base-icon name="lightbulb" size="36" unit="rpx" color="#0071e3" class="section-icon" />
           <text class="section-title">解题技巧</text>
         </view>
         <view class="section-content">
@@ -164,13 +153,13 @@
       <!-- 难度说明 -->
       <view class="section">
         <view class="section-header">
-          <text class="section-icon fa-solid fa-bolt"></text>
+          <base-icon name="bolt" size="36" unit="rpx" color="#0071e3" class="section-icon" />
           <text class="section-title">难度说明</text>
         </view>
         <view class="section-content">
           <view class="difficulty-item">
             <view class="difficulty-badge easy">
-              <text class="difficulty-icon fa-solid fa-star"></text>
+              <base-icon name="star" size="24" unit="rpx" color="#fff" class="difficulty-icon" />
               <text class="difficulty-name">简单</text>
             </view>
             <text class="difficulty-desc">预填40-45个数字，适合初学者入门练习</text>
@@ -178,7 +167,7 @@
 
           <view class="difficulty-item">
             <view class="difficulty-badge medium">
-              <text class="difficulty-icon fa-solid fa-bolt"></text>
+              <base-icon name="bolt" size="24" unit="rpx" color="#fff" class="difficulty-icon" />
               <text class="difficulty-name">中等</text>
             </view>
             <text class="difficulty-desc">预填30-35个数字，需要一定的逻辑推理能力</text>
@@ -186,7 +175,7 @@
 
           <view class="difficulty-item">
             <view class="difficulty-badge hard">
-              <text class="difficulty-icon fa-solid fa-fire"></text>
+              <base-icon name="fire" size="24" unit="rpx" color="#fff" class="difficulty-icon" />
               <text class="difficulty-name">困难</text>
             </view>
             <text class="difficulty-desc">预填25-30个数字，挑战你的智慧和耐心</text>
@@ -194,7 +183,7 @@
 
           <view class="difficulty-item">
             <view class="difficulty-badge expert">
-              <text class="difficulty-icon fa-solid fa-crown"></text>
+              <base-icon name="crown" size="24" unit="rpx" color="#fff" class="difficulty-icon" />
               <text class="difficulty-name">专家</text>
             </view>
             <text class="difficulty-desc">预填20-25个数字，只为高手准备的终极挑战</text>
@@ -205,20 +194,20 @@
       <!-- 小贴士 -->
       <view class="section">
         <view class="section-header">
-          <text class="section-icon fa-solid fa-sparkles"></text>
+          <base-icon name="circle-info" size="36" unit="rpx" color="#0071e3" class="section-icon" />
           <text class="section-title">小贴士</text>
         </view>
         <view class="section-content">
           <view class="tip-item">
-            <text class="tip-icon fa-solid fa-floppy-disk"></text>
+            <base-icon name="bookmark" size="32" unit="rpx" color="#0071e3" class="tip-icon" />
             <text class="tip-text">游戏进度会自动保存，可以随时退出继续玩</text>
           </view>
           <view class="tip-item">
-            <text class="tip-icon fa-solid fa-clock"></text>
+            <base-icon name="stopwatch" size="32" unit="rpx" color="#0071e3" class="tip-icon" />
             <text class="tip-text">计时器会记录你的游戏时间，挑战最快完成记录</text>
           </view>
           <view class="tip-item">
-            <text class="tip-icon fa-solid fa-bullseye"></text>
+            <base-icon name="brain" size="32" unit="rpx" color="#0071e3" class="tip-icon" />
             <text class="tip-text">坚持练习可以提高逻辑思维能力和专注力</text>
           </view>
         </view>
@@ -226,8 +215,6 @@
 
       <!-- 底部留白 -->
       <view class="bottom-space"></view>
-    </scroll-view>
-
     <!-- 开始游戏按钮 -->
     <view class="footer-btn" @click="handleStart">
       <text class="footer-btn-text">开始游戏</text>
@@ -236,8 +223,13 @@
 </template>
 
 <script>
+import BaseIcon from '@/components/base-icon/index.vue'
+
 export default {
   name: 'Rules',
+  components: {
+    BaseIcon
+  },
   data() {
     return {
       // 示例网格数据（简化的3×3示例）
@@ -385,71 +377,31 @@ export default {
 <style scoped>
 .rules-container {
   min-height: 100vh;
-  background: #fafafa;
+  background: linear-gradient(to bottom, #fbfbfd 0%, #f5f7fa 100%);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   overflow-x: hidden;
   max-width: 100%;
-}
-
-/* 头部 */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24rpx 32rpx;
-  background: #fff;
-  box-shadow: 0 1rpx 0 rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.back-btn {
-  width: 64rpx;
-  height: 64rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12rpx;
-  transition: all 0.2s ease;
-}
-
-.back-btn:active {
-  background: #f5f5f7;
-}
-
-.back-icon {
-  font-size: 48rpx;
-  font-weight: 600;
-  color: #333;
-  line-height: 1;
-}
-
-.header-title {
-  font-size: 34rpx;
-  font-weight: 600;
-  color: #1d1d1f;
-  line-height: 1;
-  letter-spacing: -0.5px;
-}
-
-.placeholder {
-  width: 64rpx;
-}
-
-/* 内容区域 */
-.content {
-  flex: 1;
   padding: 32rpx;
-  width: 100%;
-  box-sizing: border-box;
+  padding-bottom: 0;
 }
 
 /* 章节 */
 .section {
   margin-bottom: 48rpx;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-header {
@@ -457,44 +409,46 @@ export default {
   align-items: center;
   gap: 12rpx;
   margin-bottom: 24rpx;
+  padding-left: 8rpx;
 }
 
-.section-icon {
-  font-size: 36rpx;
-  line-height: 1;
-  color: #0071e3;
-}
+/* .section-icon 样式已由 base-icon 组件处理 */
 
 .section-title {
-  font-size: 32rpx;
-  font-weight: 600;
+  font-size: 34rpx;
+  font-weight: 700;
   color: #1d1d1f;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: -0.5px;
 }
 
 .section-content {
   background: #fff;
-  border-radius: 16rpx;
-  padding: 32rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+  border-radius: 20rpx;
+  padding: 36rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06), 0 1rpx 4rpx rgba(0, 0, 0, 0.04);
+  border: 1rpx solid rgba(0, 0, 0, 0.04);
 }
 
 /* 规则条目 */
 .rule-item {
-  margin-bottom: 32rpx;
+  margin-bottom: 36rpx;
+  padding-bottom: 36rpx;
+  border-bottom: 2rpx solid #f5f5f7;
 }
 
 .rule-item:last-child {
   margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .rule-title {
   display: block;
-  font-size: 28rpx;
+  font-size: 30rpx;
   font-weight: 600;
   color: #1d1d1f;
-  margin-bottom: 12rpx;
+  margin-bottom: 16rpx;
   line-height: 1.4;
   letter-spacing: -0.3px;
 }
@@ -502,8 +456,8 @@ export default {
 .rule-text {
   display: block;
   font-size: 26rpx;
-  color: #86868b;
-  line-height: 1.6;
+  color: #6e6e73;
+  line-height: 1.7;
   font-weight: 400;
 }
 
@@ -511,35 +465,47 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20rpx;
+  margin-top: 16rpx;
 }
 
 .rule-list-item {
   display: flex;
   align-items: flex-start;
   gap: 16rpx;
+  padding: 20rpx;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 119, 237, 0.02) 100%);
+  border-radius: 14rpx;
+  border: 1rpx solid rgba(0, 113, 227, 0.1);
+  transition: all 0.3s ease;
+}
+
+.rule-list-item:active {
+  transform: scale(0.98);
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 119, 237, 0.04) 100%);
 }
 
 .rule-number {
-  width: 44rpx;
-  height: 44rpx;
-  background: #0071e3;
+  width: 48rpx;
+  height: 48rpx;
+  background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24rpx;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   flex-shrink: 0;
-  line-height: 44rpx;
+  line-height: 48rpx;
   text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 113, 227, 0.25);
 }
 
 .rule-desc {
   flex: 1;
   font-size: 26rpx;
-  color: #86868b;
-  line-height: 1.6;
+  color: #6e6e73;
+  line-height: 1.7;
   padding-top: 8rpx;
   font-weight: 400;
 }
@@ -547,16 +513,17 @@ export default {
 /* 示例网格 */
 .example-grid {
   margin-top: 32rpx;
-  padding: 24rpx;
-  background: #f5f7fa;
-  border-radius: 12rpx;
+  padding: 28rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #f0f3f7 100%);
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(0, 113, 227, 0.1);
 }
 
 .grid-label {
   font-size: 26rpx;
   font-weight: 600;
-  color: #666;
-  margin-bottom: 16rpx;
+  color: #0071e3;
+  margin-bottom: 20rpx;
   text-align: center;
 }
 
@@ -565,6 +532,9 @@ export default {
   border: 3rpx solid #333;
   display: inline-block;
   width: 100%;
+  border-radius: 8rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
 }
 
 .mini-row {
@@ -579,6 +549,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .mini-cell.filled {
@@ -597,52 +568,66 @@ export default {
 }
 
 .grid-desc {
-  margin-top: 16rpx;
+  margin-top: 20rpx;
   font-size: 24rpx;
-  color: #999;
+  color: #6e6e73;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8rpx;
+  font-weight: 500;
 }
 
 .highlight-color {
   color: #2196f3;
-  font-size: 20rpx;
+  font-size: 24rpx;
+  font-weight: 600;
 }
 
 /* 玩法步骤 */
 .play-step {
   display: flex;
-  gap: 20rpx;
+  gap: 24rpx;
   margin-bottom: 32rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.05) 0%, rgba(48, 209, 88, 0.02) 100%);
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(52, 199, 89, 0.1);
+  transition: all 0.3s ease;
 }
 
 .play-step:last-child {
   margin-bottom: 0;
 }
 
+.play-step:active {
+  transform: scale(0.98);
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.08) 0%, rgba(48, 209, 88, 0.04) 100%);
+}
+
 .step-number {
-  width: 48rpx;
-  height: 48rpx;
-  background: #34c759;
+  width: 56rpx;
+  height: 56rpx;
+  background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26rpx;
-  font-weight: 600;
+  font-size: 28rpx;
+  font-weight: 700;
   color: #fff;
   flex-shrink: 0;
   line-height: 1;
+  box-shadow: 0 4rpx 12rpx rgba(52, 199, 89, 0.3);
 }
 
 .step-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6rpx;
+  gap: 10rpx;
+  padding-top: 4rpx;
 }
 
 .step-title {
@@ -655,18 +640,27 @@ export default {
 
 .step-desc {
   font-size: 24rpx;
-  color: #86868b;
-  line-height: 1.6;
+  color: #6e6e73;
+  line-height: 1.7;
   font-weight: 400;
 }
 
 /* 技巧条目 */
 .technique-item {
   margin-bottom: 28rpx;
+  padding: 20rpx;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.03) 0%, rgba(0, 119, 237, 0.01) 100%);
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
 }
 
 .technique-item:last-child {
   margin-bottom: 0;
+}
+
+.technique-item:active {
+  transform: translateX(4rpx);
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 119, 237, 0.02) 100%);
 }
 
 .technique-title {
@@ -674,7 +668,7 @@ export default {
   font-size: 26rpx;
   font-weight: 600;
   color: #1d1d1f;
-  margin-bottom: 10rpx;
+  margin-bottom: 12rpx;
   line-height: 1.4;
   letter-spacing: -0.3px;
 }
@@ -682,8 +676,8 @@ export default {
 .technique-desc {
   display: block;
   font-size: 24rpx;
-  color: #86868b;
-  line-height: 1.6;
+  color: #6e6e73;
+  line-height: 1.7;
   font-weight: 400;
 }
 
@@ -692,47 +686,54 @@ export default {
   display: flex;
   align-items: center;
   gap: 20rpx;
-  margin-bottom: 24rpx;
+  margin-bottom: 28rpx;
+  padding: 20rpx;
+  background: #fafafa;
+  border-radius: 14rpx;
+  transition: all 0.3s ease;
+  border: 1rpx solid rgba(0, 0, 0, 0.06);
 }
 
 .difficulty-item:last-child {
   margin-bottom: 0;
 }
 
+.difficulty-item:active {
+  transform: scale(0.98);
+  background: #f5f5f7;
+}
+
 .difficulty-badge {
-  padding: 12rpx 24rpx;
-  border-radius: 20rpx;
+  padding: 14rpx 28rpx;
+  border-radius: 24rpx;
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 8rpx;
+  gap: 10rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
 }
 
 .difficulty-badge.easy {
-  background: #34c759;
+  background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
 }
 
 .difficulty-badge.medium {
-  background: #007aff;
+  background: linear-gradient(135deg, #007aff 0%, #0071e3 100%);
 }
 
 .difficulty-badge.hard {
-  background: #ff9500;
+  background: linear-gradient(135deg, #ff9500 0%, #ff9f0a 100%);
 }
 
 .difficulty-badge.expert {
-  background: #ff3b30;
+  background: linear-gradient(135deg, #ff3b30 0%, #ff453a 100%);
 }
 
-.difficulty-icon {
-  font-size: 24rpx;
-  color: #fff;
-  line-height: 1;
-}
+/* .difficulty-icon 样式已由 base-icon 组件处理 */
 
 .difficulty-name {
-  font-size: 24rpx;
-  font-weight: 500;
+  font-size: 26rpx;
+  font-weight: 600;
   color: #fff;
   line-height: 1;
   letter-spacing: -0.3px;
@@ -741,8 +742,8 @@ export default {
 .difficulty-desc {
   flex: 1;
   font-size: 24rpx;
-  color: #86868b;
-  line-height: 1.6;
+  color: #6e6e73;
+  line-height: 1.7;
   font-weight: 400;
 }
 
@@ -750,33 +751,39 @@ export default {
 .tip-item {
   display: flex;
   align-items: flex-start;
-  gap: 16rpx;
+  gap: 20rpx;
   margin-bottom: 24rpx;
+  padding: 20rpx;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.03) 0%, rgba(0, 119, 237, 0.01) 100%);
+  border-radius: 14rpx;
+  border: 1rpx solid rgba(0, 113, 227, 0.08);
+  transition: all 0.3s ease;
 }
 
 .tip-item:last-child {
   margin-bottom: 0;
 }
 
-.tip-icon {
-  font-size: 32rpx;
-  line-height: 1;
-  flex-shrink: 0;
-  color: #0071e3;
+.tip-item:active {
+  transform: scale(0.98);
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 119, 237, 0.02) 100%);
 }
+
+/* .tip-icon 样式已由 base-icon 组件处理 */
 
 .tip-text {
   flex: 1;
   font-size: 24rpx;
-  color: #86868b;
-  line-height: 1.6;
+  color: #6e6e73;
+  line-height: 1.7;
   padding-top: 6rpx;
   font-weight: 400;
 }
 
 /* 底部留白 */
 .bottom-space {
-  height: 140rpx;
+  height: 160rpx;
+  flex-shrink: 0;
 }
 
 /* 底部按钮 */
@@ -785,29 +792,46 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20rpx 32rpx;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 -1rpx 0 rgba(0, 0, 0, 0.08);
+  padding: 24rpx 32rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 0 -2rpx 20rpx rgba(0, 0, 0, 0.08);
+  z-index: 100;
 }
 
 .footer-btn-text {
   display: block;
   width: 100%;
-  height: 88rpx;
-  background: #0071e3;
-  border-radius: 12rpx;
-  font-size: 30rpx;
-  font-weight: 500;
+  height: 96rpx;
+  background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  font-weight: 600;
   color: #fff;
   text-align: center;
-  line-height: 88rpx;
-  transition: all 0.2s ease;
+  line-height: 96rpx;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: -0.3px;
+  box-shadow: 0 6rpx 20rpx rgba(0, 113, 227, 0.35);
 }
 
 .footer-btn:active .footer-btn-text {
-  background: #0077ed;
+  background: linear-gradient(135deg, #0077ed 0%, #007aff 100%);
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 16rpx rgba(0, 113, 227, 0.3);
+}
+
+/* 响应式优化 */
+@media screen and (min-width: 750px) {
+  .rules-container {
+    padding: 48rpx;
+  }
+  
+  .section-content {
+    padding: 48rpx;
+  }
 }
 </style>
 

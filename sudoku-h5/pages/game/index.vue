@@ -55,23 +55,23 @@
     <!-- 功能按钮 -->
     <view class="function-buttons">
       <view class="function-btn" :class="{ disabled: !canUndo }" @click="handleUndo">
-        <text class="btn-icon fa-solid fa-rotate-left"></text>
+        <base-icon name="rotate-left" size="36" unit="rpx" color="#1d1d1f" class="btn-icon" />
         <text class="btn-text">撤销</text>
       </view>
       <view class="function-btn" :class="{ disabled: !canRedo }" @click="handleRedo">
-        <text class="btn-icon fa-solid fa-rotate-right"></text>
+        <base-icon name="rotate-right" size="36" unit="rpx" color="#1d1d1f" class="btn-icon" />
         <text class="btn-text">重做</text>
       </view>
       <view class="function-btn" :class="{ active: noteMode }" @click="handleToggleNote">
-        <text class="btn-icon fa-solid fa-pencil"></text>
+        <base-icon name="pencil" size="36" unit="rpx" :color="noteMode ? '#fff' : '#1d1d1f'" class="btn-icon" />
         <text class="btn-text">{{ noteMode ? '笔记' : '填数' }}</text>
       </view>
       <view class="function-btn" @click="handleHint">
-        <text class="btn-icon fa-solid fa-lightbulb"></text>
+        <base-icon name="lightbulb" size="36" unit="rpx" color="#1d1d1f" class="btn-icon" />
         <text class="btn-text">提示</text>
       </view>
       <view class="function-btn" @click="handleRestart">
-        <text class="btn-icon fa-solid fa-arrow-rotate-right"></text>
+        <base-icon name="arrow-rotate-right" size="36" unit="rpx" color="#1d1d1f" class="btn-icon" />
         <text class="btn-text">重置</text>
       </view>
     </view>
@@ -107,7 +107,7 @@
     <!-- 暂停遮罩 -->
     <view v-if="isPaused" class="pause-mask" @click="handleResume">
       <view class="pause-content">
-        <text class="pause-icon fa-solid fa-pause"></text>
+        <base-icon name="pause" size="100" unit="rpx" color="#fff" class="pause-icon" />
         <text class="pause-text">游戏已暂停</text>
         <text class="pause-hint">点击任意处继续</text>
       </view>
@@ -122,14 +122,14 @@
         </view>
         <view class="guide-body">
           <view class="guide-item">
-            <text class="guide-icon fa-solid fa-pencil"></text>
+            <base-icon name="pencil" size="28" unit="rpx" color="#fff" class="guide-icon" />
             <view class="guide-text-content">
               <text class="guide-item-title">笔记模式</text>
               <text class="guide-item-desc">用于标记候选数字，帮助推理</text>
             </view>
           </view>
           <view class="guide-item">
-            <text class="guide-icon fa-solid fa-pen"></text>
+            <base-icon name="pen" size="28" unit="rpx" color="#fff" class="guide-icon" />
             <view class="guide-text-content">
               <text class="guide-item-title">填数模式</text>
               <text class="guide-item-desc">直接填入确定的答案</text>
@@ -154,6 +154,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import SudokuBoard from '@/components/sudoku-board/index.vue'
 import NumberKeyboard from '@/components/number-keyboard/index.vue'
 import GameTimer from '@/components/game-timer/index.vue'
+import BaseIcon from '@/components/base-icon/index.vue'
 import { getDifficultyConfig, formatTime } from '@/utils/sudoku-helper'
 
 export default {
@@ -161,7 +162,8 @@ export default {
   components: {
     SudokuBoard,
     NumberKeyboard,
-    GameTimer
+    GameTimer,
+    BaseIcon
   },
   data() {
     return {
@@ -600,16 +602,11 @@ export default {
   box-shadow: 0 2rpx 12rpx rgba(0, 113, 227, 0.3);
 }
 
-.function-btn.active .btn-icon,
 .function-btn.active .btn-text {
   color: #fff;
 }
 
-.btn-icon {
-  font-size: 36rpx;
-  color: #1d1d1f;
-  line-height: 1;
-}
+/* .btn-icon 样式已由 base-icon 组件处理，通过 color 和 size 属性控制 */
 
 .btn-text {
   font-size: 20rpx;
@@ -675,11 +672,7 @@ export default {
   gap: 24rpx;
 }
 
-.pause-icon {
-  font-size: 100rpx;
-  color: #fff;
-  line-height: 1;
-}
+/* .pause-icon 样式已由 base-icon 组件处理，通过 color 和 size 属性控制 */
 
 .pause-text {
   font-size: 40rpx;

@@ -1,10 +1,15 @@
 <template>
   <view class="home-container">
-    <fui-nav-bar background="transparent" is-occupy is-fixed>
+    <fui-nav-bar background="#FBFBFD" is-occupy is-fixed>
     </fui-nav-bar>
  
     <!-- 主内容 -->
     <view class="content">
+      <!-- Logo -->
+      <view class="logo-section">
+        <image class="logo-image" src="/static/images/logo.png" mode="aspectFit" />
+      </view>
+      
       <!-- 标题 -->
       <view class="title-section">
         <text class="title">挑战你的智力</text>
@@ -36,6 +41,10 @@
         <view class="link-item" @tap="handleTips">
           <base-icon name="lightbulb" size="26" unit="rpx" color="#0071e3" class="link-icon" />
           <text class="link-text">技巧分享</text>
+        </view>
+        <view class="link-item" @tap="handleAbout">
+          <base-icon name="info-circle" size="26" unit="rpx" color="#0071e3" class="link-icon" />
+          <text class="link-text">关于我们</text>
         </view>
       </view>
     </view>
@@ -98,6 +107,12 @@ export default {
       uni.navigateTo({
         url: '/pages/tips/index'
       })
+    },
+    
+    handleAbout() {
+      uni.navigateTo({
+        url: '/pages/about/index'
+      })
     }
   }
 }
@@ -146,6 +161,19 @@ export default {
   box-sizing: border-box;
   max-width: 100%;
   background: #fbfbfd;
+}
+
+/* Logo区域 */
+.logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.logo-image {
+  width: 160rpx;
+  height: 160rpx;
 }
 
 /* 标题区域 */

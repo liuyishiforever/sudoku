@@ -33,6 +33,13 @@
         "navigationBarTitleText": "技巧分享",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/about/index",
+      "style": {
+        "navigationBarTitleText": "关于我们",
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {

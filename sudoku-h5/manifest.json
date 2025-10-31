@@ -1,7 +1,7 @@
 {
     "name" : "纯粹数独",
     "appid" : "__UNI__A09AE9B",
-    "description" : "纯粹数独 - 挑战你的逻辑思维",
+    "description" : "纯粹数独 - 一个零广告、轻量级的纯粹数独，专注于最本真的数字推理体验。",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -66,7 +66,7 @@
         },
         "title" : "纯粹数独",
         "router" : {
-            "mode" : "hash",
+            "mode" : "history",
             "base" : "./"
         }
     }

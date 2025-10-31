@@ -1,21 +1,18 @@
 /**
  * 数独游戏状态管理模块
  */
-import { 
-  generateSudoku, 
-  isComplete, 
+import {
   checkConflicts,
-  getCandidates,
+  cloneBoard,
+  generateSudoku,
   getHint,
-  cloneBoard
+  isComplete
 } from '@/utils/sudoku'
-import { 
-  createEmptyNotes, 
-  cloneNotes, 
+import {
   calculateProgress,
+  cloneNotes,
   countEmptyCells,
-  boardToString,
-  stringToBoard
+  createEmptyNotes
 } from '@/utils/sudoku-helper'
 
 const STORAGE_KEY = 'sudoku_game_state'

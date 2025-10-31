@@ -9,14 +9,14 @@
     {
       "path": "pages/home/index",
       "style": {
-        "navigationBarTitleText": "数独游戏",
+        "navigationBarTitleText": "纯粹数独",
         "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/game/index",
       "style": {
-        "navigationBarTitleText": "数独游戏",
+        "navigationBarTitleText": "纯粹数独",
         "navigationStyle": "custom"
       }
     },
@@ -43,7 +43,7 @@
     }
   ],
   "globalStyle": {
-    "navigationBarTitleText": "数独游戏",
+    "navigationBarTitleText": "纯粹数独",
     "navigationBarBackgroundColor": "#667eea",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f5f7fa"

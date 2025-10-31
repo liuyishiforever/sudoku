@@ -1,15 +1,12 @@
 <template>
   <view class="home-container">
-    <fui-nav-bar background="#FBFBFD" is-occupy is-fixed>
-    </fui-nav-bar>
- 
     <!-- 主内容 -->
     <view class="content">
       <!-- Logo -->
       <view class="logo-section">
         <image class="logo-image" src="/static/images/logo.png" mode="aspectFit" />
       </view>
-      
+
       <!-- 标题 -->
       <view class="title-section">
         <text class="title">挑战你的智力</text>
@@ -18,7 +15,7 @@
 
       <!-- 难度选择卡片 -->
       <view class="difficulty-list">
-        <difficulty-card 
+        <difficulty-card
           v-for="level in difficulties"
           :key="level"
           :difficulty="level"
@@ -75,13 +72,13 @@ export default {
   },
   methods: {
     ...mapActions('sudoku', ['startNewGame']),
-    
+
     handleDifficultyClick(difficulty) {
       uni.showLoading({
         title: '生成数独中...',
         mask: true
       })
-      
+
       setTimeout(() => {
         this.startNewGame(difficulty)
         uni.hideLoading()
@@ -90,25 +87,25 @@ export default {
         })
       }, 100)
     },
-    
+
     handleContinue() {
       uni.navigateTo({
         url: '/pages/game/index'
       })
     },
-    
+
     handleRules() {
       uni.navigateTo({
         url: '/pages/rules/index'
       })
     },
-    
+
     handleTips() {
       uni.navigateTo({
         url: '/pages/tips/index'
       })
     },
-    
+
     handleAbout() {
       uni.navigateTo({
         url: '/pages/about/index'

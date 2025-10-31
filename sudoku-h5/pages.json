@@ -1,0 +1,50 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "fui-(.*)": "@/components/firstui/fui-$1/fui-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "数独游戏",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/game/index",
+      "style": {
+        "navigationBarTitleText": "数独游戏",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/rules/index",
+      "style": {
+        "navigationBarTitleText": "游戏规则",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/tips/index",
+      "style": {
+        "navigationBarTitleText": "技巧分享",
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#667eea",
+    "backgroundColor": "#fff",
+    "list": []
+  },
+  "globalStyle": {
+    "navigationBarTitleText": "数独游戏",
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f7fa"
+  }
+}

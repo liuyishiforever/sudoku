@@ -1,5 +1,10 @@
 <template>
   <view class="about-container">
+    <!-- 状态栏占位 (H5环境) -->
+    <!-- #ifdef H5 -->
+    <view class="status-bar-h5"></view>
+    <!-- #endif -->
+    
     <!-- 内容区域 -->
     <view class="content">
       <!-- Logo 和标题 -->
@@ -10,7 +15,6 @@
         <text class="app-name">纯粹数独</text>
         <text class="app-version">v1.0.0</text>
       </view>
-
       <!-- 应用简介 -->
       <view class="section">
         <view class="section-header">
@@ -139,6 +143,13 @@ export default {
 .about-container {
   min-height: 100vh;
   background: #fbfbfd;
+}
+
+/* H5状态栏占位 */
+.status-bar-h5 {
+  height: 44px;
+  background: #fbfbfd;
+  width: 100%;
 }
 
 /* 导航栏返回按钮 */

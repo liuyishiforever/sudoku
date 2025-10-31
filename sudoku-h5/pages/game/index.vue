@@ -1,5 +1,10 @@
 <template>
   <view class="game-container">
+    <!-- 状态栏占位 (H5环境) -->
+    <!-- #ifdef H5 -->
+    <view class="status-bar-h5"></view>
+    <!-- #endif -->
+    
     <!-- 顶部信息栏 -->
     <view class="game-header">
       <view class="header-left">
@@ -77,45 +82,84 @@
     </view>
 
     <!-- 完成弹窗 -->
-    <fui-modal 
+    <u-popup 
       :show="isComplete" 
-      :mask-closable="false"
-      title="恭喜完成！"
-      :buttons="completeButtons"
-      @click="handleCompleteClick"
+      mode="center" 
+      :closeOnClickOverlay="false"
+      :round="20"
+      :customStyle="{
+        width: '600rpx',
+        background: '#fff',
+        overflow: 'hidden'
+      }"
     >
-      <view class="complete-content">
-        <view class="complete-item">
-          <text class="complete-label">难度：</text>
-          <text class="complete-value">{{ difficultyName }}</text>
+      <view class="complete-modal-content">
+        <view class="complete-modal-title">恭喜完成！</view>
+        <view class="complete-content">
+          <view class="complete-item">
+            <text class="complete-label">难度：</text>
+            <text class="complete-value">{{ difficultyName }}</text>
+          </view>
+          <view class="complete-item">
+            <text class="complete-label">用时：</text>
+            <text class="complete-value">{{ formattedTime }}</text>
+          </view>
+          <view class="complete-item">
+            <text class="complete-label">错误：</text>
+            <text class="complete-value">{{ errors }} 次</text>
+          </view>
+          <view class="complete-item">
+            <text class="complete-label">提示：</text>
+            <text class="complete-value">{{ hintsUsed }} 次</text>
+          </view>
         </view>
-        <view class="complete-item">
-          <text class="complete-label">用时：</text>
-          <text class="complete-value">{{ formattedTime }}</text>
-        </view>
-        <view class="complete-item">
-          <text class="complete-label">错误：</text>
-          <text class="complete-value">{{ errors }} 次</text>
-        </view>
-        <view class="complete-item">
-          <text class="complete-label">提示：</text>
-          <text class="complete-value">{{ hintsUsed }} 次</text>
+        <view class="complete-modal-footer">
+          <view class="complete-modal-btn complete-modal-btn-cancel" @click="handleBackHome">
+            <text class="complete-modal-btn-text">返回首页</text>
+          </view>
+          <view class="complete-modal-btn complete-modal-btn-confirm" @click="handleNewGame">
+            <text class="complete-modal-btn-text">再来一局</text>
+          </view>
         </view>
       </view>
-    </fui-modal>
+    </u-popup>
 
     <!-- 暂停遮罩 -->
-    <view v-if="isPaused" class="pause-mask" @click="handleResume">
+    <u-popup 
+      :show="isPaused" 
+      mode="center"
+      :overlay="true"
+      :closeOnClickOverlay="true"
+      :customStyle="{
+        background: 'transparent'
+      }"
+      :overlayStyle="{
+        background: 'rgba(0, 0, 0, 0.75)',
+        backdropFilter: 'blur(20px)'
+      }"
+      @click="handleResume"
+    >
       <view class="pause-content">
         <base-icon name="pause" size="100" unit="rpx" color="#fff" class="pause-icon" />
         <text class="pause-text">游戏已暂停</text>
         <text class="pause-hint">点击任意处继续</text>
       </view>
-    </view>
+    </u-popup>
 
     <!-- 新手引导提示 -->
-    <view v-if="showGuide" class="guide-mask" @click="handleCloseGuide">
-      <view class="guide-content" @click.stop>
+    <u-popup 
+      :show="showGuide" 
+      mode="center"
+      :closeOnClickOverlay="true"
+      :round="20"
+      :customStyle="{
+        width: '600rpx',
+        background: '#fff',
+        overflow: 'hidden'
+      }"
+      @close="handleCloseGuide"
+    >
+      <view class="guide-content">
         <view class="guide-header">
           <text class="guide-title">💡 游戏提示</text>
           <text class="guide-close" @click="handleCloseGuide">✕</text>
@@ -145,7 +189,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </u-popup>
   </view>
 </template>
 
@@ -168,19 +212,7 @@ export default {
   data() {
     return {
       timerInterval: null,
-      showGuide: false,
-      completeButtons: [
-        {
-          text: '再来一局',
-          color: '#fff',
-          background: '#ff9500'
-        },
-        {
-          text: '返回首页',
-          color: '#fff',
-          background: '#0071e3'
-        }
-      ]
+      showGuide: false
     }
   },
   computed: {
@@ -370,18 +402,6 @@ export default {
       this.startTimer()
     },
     
-    // 处理完成弹窗按钮点击
-    handleCompleteClick(e) {
-      console.log('完成弹窗按钮点击:', e)
-      if (e.index === 0) {
-        // 再来一局
-        this.handleNewGame()
-      } else if (e.index === 1) {
-        // 返回首页
-        this.handleBackHome()
-      }
-    },
-    
     // 再来一局
     handleNewGame() {
       console.log("再来一局")
@@ -423,6 +443,13 @@ export default {
   box-sizing: border-box;
   overflow-x: hidden;
   max-width: 100%;
+}
+
+/* H5状态栏占位 */
+.status-bar-h5 {
+  height: 44px;
+  background: #fafafa;
+  width: 100%;
 }
 
 /* 顶部信息栏 */
@@ -616,8 +643,21 @@ export default {
 }
 
 /* 完成弹窗 */
+.complete-modal-content {
+  width: 100%;
+}
+
+.complete-modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-align: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid #f5f5f7;
+}
+
 .complete-content {
-  padding: 40rpx 0;
+  padding: 32rpx;
 }
 
 .complete-item {
@@ -643,28 +683,54 @@ export default {
   color: #1d1d1f;
 }
 
-.modal-footer {
+.complete-modal-footer {
   display: flex;
+  padding: 32rpx;
   gap: 20rpx;
-  justify-content: center;
-  padding: 20rpx 0;
+  border-top: 1rpx solid #f5f5f7;
 }
 
-/* 暂停遮罩 */
-.pause-mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(20px);
+.complete-modal-btn {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 12rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  transition: all 0.2s ease;
 }
 
+.complete-modal-btn-cancel {
+  background: #f5f5f7;
+}
+
+.complete-modal-btn-cancel:active {
+  background: #e5e5e7;
+}
+
+.complete-modal-btn-confirm {
+  background: #ff9500;
+}
+
+.complete-modal-btn-confirm:active {
+  background: #e68600;
+}
+
+.complete-modal-btn-text {
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.complete-modal-btn-cancel .complete-modal-btn-text {
+  color: #1d1d1f;
+}
+
+.complete-modal-btn-confirm .complete-modal-btn-text {
+  color: #fff;
+}
+
+/* 暂停遮罩 */
 .pause-content {
   display: flex;
   flex-direction: column;
@@ -690,28 +756,8 @@ export default {
 }
 
 /* 新手引导 */
-.guide-mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 40rpx;
-  box-sizing: border-box;
-}
-
 .guide-content {
   width: 100%;
-  max-width: 600rpx;
-  background: #fff;
-  border-radius: 20rpx;
-  overflow: hidden;
 }
 
 .guide-header {

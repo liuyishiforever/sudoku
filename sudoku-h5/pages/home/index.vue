@@ -1,5 +1,10 @@
 <template>
   <view class="home-container">
+    <!-- 状态栏占位 (H5环境) -->
+    <!-- #ifdef H5 -->
+    <view class="status-bar"></view>
+    <!-- #endif -->
+    
     <!-- 主内容 -->
     <view class="content">
       <!-- Logo -->
@@ -115,14 +120,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .home-container {
-  min-height: 100vh;
   background: #fff;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 状态栏占位 */
+.status-bar {
+  height: 44px;
+  background: #fbfbfd;
+  width: 100%;
 }
 
 /* 头部 */
@@ -183,7 +195,7 @@ export default {
   display: block;
   font-size: 48rpx;
   font-weight: 600;
-  color: #1d1d1f;
+  /* color: #1d1d1f; */
   margin-bottom: 12rpx;
   line-height: 1.1;
   letter-spacing: -1px;

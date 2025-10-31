@@ -1,7 +1,12 @@
 <template>
   <view class="rules-container">
-      <!-- 基础规则 -->
-      <view class="section">
+    <!-- 状态栏占位 (H5环境) -->
+    <!-- #ifdef H5 -->
+    <view class="status-bar-h5"></view>
+    <!-- #endif -->
+    
+    <!-- 基础规则 -->
+    <view class="section">
         <view class="section-header">
           <base-icon name="clipboard-list" size="36" unit="rpx" color="#0071e3" class="section-icon" />
           <text class="section-title">基础规则</text>
@@ -385,6 +390,13 @@ export default {
   max-width: 100%;
   padding: 32rpx;
   padding-bottom: 0;
+}
+
+/* H5状态栏占位 */
+.status-bar-h5 {
+  height: 44px;
+  background: #fbfbfd;
+  width: 100%;
 }
 
 /* 章节 */

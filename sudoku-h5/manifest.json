@@ -60,7 +60,6 @@
     },
     "vueVersion" : "2",
     "h5" : {
-        "template" : "static/index.html",
         "devServer" : {
             "port" : 9090,
             "https" : false

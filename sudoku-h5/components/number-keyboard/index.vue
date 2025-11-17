@@ -105,11 +105,16 @@ export default {
   padding: 20rpx;
   background-color: #fafafa;
   box-sizing: border-box;
+  /* 小程序优化：防止布局溢出 */
+  overflow: hidden;
 }
 
 .keyboard-row {
   display: flex;
   margin-bottom: 12rpx;
+  /* 小程序优化：确保行布局正常 */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .keyboard-row:last-child {
@@ -129,6 +134,8 @@ export default {
   transition: all 0.2s ease;
   position: relative;
   margin-right: 12rpx;
+  /* 小程序优化：确保按钮布局正常 */
+  box-sizing: border-box;
 }
 
 .keyboard-btn:last-child {
@@ -137,6 +144,8 @@ export default {
 
 .keyboard-btn:active:not(.disabled) {
   background: #f5f5f7;
+  /* 小程序优化：轻微缩放效果 */
+  transform: scale(0.98);
 }
 
 .keyboard-btn.disabled {
@@ -150,6 +159,7 @@ export default {
 
 .keyboard-btn.erase:active {
   background: #ff453a;
+  transform: scale(0.98);
 }
 
 .btn-text {

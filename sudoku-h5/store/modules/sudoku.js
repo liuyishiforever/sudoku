@@ -72,6 +72,9 @@ const getters = {
   // 指定单元格是否为初始题目（不可编辑）
   isOriginalCell: state => (row, col) => {
     if (!state.puzzle) return false
+    if (typeof row !== 'number' || typeof col !== 'number') return false
+    if (row < 0 || row >= 9 || col < 0 || col >= 9) return false
+    if (!state.puzzle[row]) return false
     return state.puzzle[row][col] !== 0
   },
   
@@ -116,7 +119,12 @@ const mutations = {
   
   // 选择单元格
   SELECT_CELL(state, { row, col }) {
-    state.selectedCell = { row, col }
+    // 创建新对象确保响应式更新（小程序需要）
+    state.selectedCell = { row: Number(row), col: Number(col) }
+    // 强制触发更新（小程序优化）
+    // #ifdef MP-WEIXIN
+    // 在小程序中，可能需要通过创建新对象来触发响应式
+    // #endif
   },
   
   // 取消选择
@@ -337,12 +345,22 @@ const actions = {
     this.dispatch('sudoku/saveGame')
   },
   
-  // 选择单元格
-  selectCell({ commit, getters }, { row, col }) {
-    // 检查是否为初始题目
-    if (getters.isOriginalCell(row, col)) {
+  // 选择单元格（允许选择所有单元格，包括初始题目）
+  selectCell({ commit, state }, { row, col }) {
+    // 参数验证
+    if (typeof row !== 'number' || typeof col !== 'number') {
+      console.warn('selectCell: 无效的行列参数', { row, col })
       return
     }
+    if (row < 0 || row >= 9 || col < 0 || col >= 9) {
+      console.warn('selectCell: 行列超出范围', { row, col })
+      return
+    }
+    if (!state.board || !state.board[row] || typeof state.board[row][col] === 'undefined') {
+      console.warn('selectCell: 棋盘数据无效', { row, col })
+      return
+    }
+    // 允许选择所有单元格（包括初始题目），用于高亮显示
     commit('SELECT_CELL', { row, col })
   },
   

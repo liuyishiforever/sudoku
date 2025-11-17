@@ -1,9 +1,7 @@
 <template>
   <view class="game-container">
-    <!-- 状态栏占位 (H5环境) -->
-    <!-- #ifdef H5 -->
+    <!-- 状态栏占位 -->
     <view class="status-bar-h5"></view>
-    <!-- #endif -->
     
     <!-- 顶部信息栏 -->
     <view class="game-header">
@@ -58,7 +56,7 @@
     />
 
     <!-- 功能按钮 -->
-    <view class="function-buttons">
+    <view class="function-buttons" :style="functionButtonsStyle">
       <view class="function-btn" :class="{ disabled: !canUndo }" @click="handleUndo">
         <base-icon name="rotate-left" size="36" unit="rpx" color="#1d1d1f" class="btn-icon" />
         <text class="btn-text">撤销</text>
@@ -134,8 +132,7 @@
         background: 'transparent'
       }"
       :overlayStyle="{
-        background: 'rgba(0, 0, 0, 0.75)',
-        backdropFilter: 'blur(20px)'
+        background: 'rgba(0, 0, 0, 0.85)'
       }"
       @click="handleResume"
     >
@@ -244,6 +241,11 @@ export default {
     
     formattedTime() {
       return formatTime(this.elapsedTime)
+    },
+    
+    // 功能按钮样式
+    functionButtonsStyle() {
+      return {}
     }
   },
   onLoad() {
@@ -313,7 +315,23 @@ export default {
     },
     
     // 点击单元格
-    handleCellClick({ row, col }) {
+    handleCellClick(data) {
+      // 确保接收到有效数据
+      if (!data || typeof data !== 'object') {
+        console.error('Game: 无效的单元格点击数据', data)
+        return
+      }
+      
+      const row = Number(data.row)
+      const col = Number(data.col)
+      
+      // 验证参数有效性
+      if (isNaN(row) || isNaN(col) || row < 0 || row >= 9 || col < 0 || col >= 9) {
+        console.error('Game: 无效的行列参数', data)
+        return
+      }
+      
+      // 调用store的selectCell action
       this.selectCell({ row, col })
     },
     
@@ -443,9 +461,10 @@ export default {
   box-sizing: border-box;
   overflow-x: hidden;
   max-width: 100%;
+  width: 100%;
 }
 
-/* H5状态栏占位 */
+/* 状态栏占位 */
 .status-bar-h5 {
   height: 44px;
   background: #fafafa;
@@ -465,7 +484,14 @@ export default {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 16rpx;
+}
+
+.header-left > view {
+  margin-right: 16rpx;
+}
+
+.header-left > view:last-child {
+  margin-right: 0;
 }
 
 .back-btn {
@@ -495,6 +521,8 @@ export default {
   padding: 12rpx 24rpx;
   border-radius: 20rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .badge-text {
@@ -527,7 +555,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8rpx;
+}
+
+.stat-item > text {
+  margin-bottom: 8rpx;
+}
+
+.stat-item > text:last-child {
+  margin-bottom: 0;
 }
 
 .stat-label {
@@ -550,12 +585,19 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8rpx;
   padding: 16rpx 24rpx;
   margin-bottom: 20rpx;
   background: #fff;
   border-radius: 12rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.mode-indicator > text {
+  margin-right: 8rpx;
+}
+
+.mode-indicator > text:last-child {
+  margin-right: 0;
 }
 
 .mode-text {
@@ -596,10 +638,17 @@ export default {
 .function-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 12rpx;
   margin-bottom: 20rpx;
   width: 100%;
   box-sizing: border-box;
+}
+
+.function-buttons > view {
+  margin-right: 12rpx;
+}
+
+.function-buttons > view:last-child {
+  margin-right: 0;
 }
 
 .function-btn {
@@ -611,9 +660,18 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease;
+}
+
+.function-btn > view,
+.function-btn > text {
+  margin-bottom: 6rpx;
+}
+
+.function-btn > view:last-child,
+.function-btn > text:last-child {
+  margin-bottom: 0;
 }
 
 .function-btn:active:not(.disabled) {
@@ -645,6 +703,7 @@ export default {
 /* 完成弹窗 */
 .complete-modal-content {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .complete-modal-title {
@@ -658,6 +717,7 @@ export default {
 
 .complete-content {
   padding: 32rpx;
+  box-sizing: border-box;
 }
 
 .complete-item {
@@ -686,8 +746,16 @@ export default {
 .complete-modal-footer {
   display: flex;
   padding: 32rpx;
-  gap: 20rpx;
   border-top: 1rpx solid #f5f5f7;
+  box-sizing: border-box;
+}
+
+.complete-modal-footer > view {
+  margin-right: 20rpx;
+}
+
+.complete-modal-footer > view:last-child {
+  margin-right: 0;
 }
 
 .complete-modal-btn {
@@ -698,6 +766,7 @@ export default {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .complete-modal-btn-cancel {
@@ -706,6 +775,7 @@ export default {
 
 .complete-modal-btn-cancel:active {
   background: #e5e5e7;
+  transform: scale(0.98);
 }
 
 .complete-modal-btn-confirm {
@@ -714,6 +784,7 @@ export default {
 
 .complete-modal-btn-confirm:active {
   background: #e68600;
+  transform: scale(0.98);
 }
 
 .complete-modal-btn-text {
@@ -735,7 +806,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24rpx;
+}
+
+.pause-content > view,
+.pause-content > text {
+  margin-bottom: 24rpx;
+}
+
+.pause-content > view:last-child,
+.pause-content > text:last-child {
+  margin-bottom: 0;
 }
 
 /* .pause-icon 样式已由 base-icon 组件处理，通过 color 和 size 属性控制 */
@@ -758,6 +838,7 @@ export default {
 /* 新手引导 */
 .guide-content {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .guide-header {
@@ -766,6 +847,7 @@ export default {
   align-items: center;
   padding: 32rpx;
   border-bottom: 1rpx solid #f5f5f7;
+  box-sizing: border-box;
 }
 
 .guide-title {
@@ -789,13 +871,23 @@ export default {
 
 .guide-body {
   padding: 32rpx;
+  box-sizing: border-box;
 }
 
 .guide-item {
   display: flex;
   align-items: flex-start;
-  gap: 20rpx;
   margin-bottom: 28rpx;
+}
+
+.guide-item > view,
+.guide-item > text {
+  margin-right: 20rpx;
+}
+
+.guide-item > view:last-child,
+.guide-item > text:last-child {
+  margin-right: 0;
 }
 
 .guide-item:last-of-type {
@@ -821,7 +913,15 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8rpx;
+  padding-top: 4rpx;
+}
+
+.guide-text-content > text {
+  margin-bottom: 8rpx;
+}
+
+.guide-text-content > text:last-child {
+  margin-bottom: 0;
 }
 
 .guide-item-title {
@@ -843,6 +943,7 @@ export default {
   padding: 20rpx;
   background: #f5f7fa;
   border-radius: 12rpx;
+  box-sizing: border-box;
 }
 
 .guide-tip-text {
@@ -857,6 +958,7 @@ export default {
 .guide-footer {
   padding: 32rpx;
   border-top: 1rpx solid #f5f5f7;
+  box-sizing: border-box;
 }
 
 .guide-btn {
@@ -872,6 +974,7 @@ export default {
 
 .guide-btn:active {
   background: #0077ed;
+  transform: scale(0.98);
 }
 
 .guide-btn-text {

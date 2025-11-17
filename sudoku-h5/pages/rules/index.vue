@@ -1,6 +1,9 @@
 <template>
   <view class="rules-container">
-    <!-- 状态栏占位 (H5环境) -->
+    <!-- 状态栏占位 -->
+    <!-- #ifdef MP-WEIXIN -->
+    <view class="status-bar" :style="{ height: statusBarHeight + 'px' }"></view>
+    <!-- #endif -->
     <!-- #ifdef H5 -->
     <view class="status-bar-h5"></view>
     <!-- #endif -->
@@ -237,6 +240,7 @@ export default {
   },
   data() {
     return {
+      statusBarHeight: 0,
       // 示例网格数据（简化的3×3示例）
       exampleGrid: [
         {
@@ -366,6 +370,14 @@ export default {
           ]
         }
       ]
+    }
+  },
+  onLoad() {
+    try {
+      const systemInfo = uni.getSystemInfoSync()
+      this.statusBarHeight = systemInfo.statusBarHeight || 0
+    } catch (e) {
+      console.error('获取系统信息失败:', e)
     }
   },
   methods: {

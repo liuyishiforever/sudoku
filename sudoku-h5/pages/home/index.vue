@@ -1,6 +1,9 @@
 <template>
   <view class="home-container">
-    <!-- 状态栏占位 (H5环境) -->
+    <!-- 状态栏占位 -->
+    <!-- #ifdef MP-WEIXIN -->
+    <view class="status-bar-weixin" :style="{ height: statusBarHeight + 'px' }"></view>
+    <!-- #endif -->
     <!-- #ifdef H5 -->
     <view class="status-bar"></view>
     <!-- #endif -->
@@ -35,7 +38,7 @@
       </view>
 
       <!-- 底部链接 -->
-      <view class="footer-links">
+      <view class="footer-links" :style="{ paddingBottom: safeAreaBottom + 'px' }">
         <view class="link-item" @tap="handleRules">
           <base-icon name="book" size="26" unit="rpx" color="#0071e3" class="link-icon" />
           <text class="link-text">游戏规则</text>
@@ -66,7 +69,9 @@ export default {
   },
   data() {
     return {
-      difficulties: ['easy', 'medium', 'hard', 'expert']
+      difficulties: ['easy', 'medium', 'hard', 'expert'],
+      statusBarHeight: 0,
+      safeAreaBottom: 0
     }
   },
   computed: {
@@ -75,8 +80,25 @@ export default {
       return !!this.board
     }
   },
+  onLoad() {
+    this.getSystemInfo()
+  },
   methods: {
     ...mapActions('sudoku', ['startNewGame']),
+    
+    // 获取系统信息
+    getSystemInfo() {
+      try {
+        const systemInfo = uni.getSystemInfoSync()
+        this.statusBarHeight = systemInfo.statusBarHeight || 0
+        const safeArea = systemInfo.safeArea
+        if (safeArea) {
+          this.safeAreaBottom = systemInfo.screenHeight - safeArea.bottom
+        }
+      } catch (e) {
+        console.error('获取系统信息失败:', e)
+      }
+    },
 
     handleDifficultyClick(difficulty) {
       uni.showLoading({
@@ -130,7 +152,13 @@ export default {
   min-height: 100vh;
 }
 
-/* 状态栏占位 */
+/* 小程序状态栏占位 */
+.status-bar-weixin {
+  background: #fbfbfd;
+  width: 100%;
+}
+
+/* H5状态栏占位 */
 .status-bar {
   height: 44px;
   background: #fbfbfd;
